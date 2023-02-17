@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "my-resource-group"
+  name     = "tidal-example-resource-group"
   location = var.location
   tags = {
     environment = var.environment
@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_mssql_server" "sql" {
-  name                         = "my-sql-server"
+  name                         = "tidal-example-sql-server-${var.environment}"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
@@ -41,7 +41,7 @@ resource "azurerm_mssql_database" "database" {
 
 
 resource "azurerm_service_plan" "asp" {
-  name                = "my-app-service-plan"
+  name                = "tidale-example-app-service-plan"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Windows"  
@@ -53,7 +53,7 @@ resource "azurerm_service_plan" "asp" {
 }
 
 resource "azurerm_windows_web_app" "example" {
-  name                = "my-web-app-${var.environment}"
+  name                = "tidal-example-web-app-${var.environment}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.asp.id
