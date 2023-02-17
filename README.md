@@ -38,6 +38,14 @@ terraform plan -var-file prod/shared.tfvars
 terraform apply -var-file prod/shared.tfvars
 ```
 
+## Steps to Cleanup
+To clean up after yourself, simply:
+
+```
+terraform destroy -var-file prod/shared.tfvars
+```
+
+
 ## TODO
 - [] Develop github action deployment 
 - [] Develop DevOps pipeline deployment
