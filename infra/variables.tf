@@ -16,10 +16,10 @@ variable "sql_sku" {
   default     = "Basic"
 }
 
-variable "sql_capacity" {
-  description = "The number of DTUs to use for the Azure SQL Database."
-  type        = number
-  default     = 5
+variable "sql_max_size_gb" {
+  description = "The maximum size of the Azure SQL Database."
+  type        = string
+  default     = "2"
 }
 
 variable "app_service_size" {
