@@ -1,7 +1,13 @@
 variable "location" {
   description = "The region in which to create the Azure resources."
   type        = string
-  default     = "eastus"
+  default     = "canadaeast"
+}
+
+variable "environment" {
+  description = "The environment in which to create the Azure resources."
+  type        = string
+  default     = "dev"
 }
 
 variable "sql_sku" {
@@ -14,12 +20,6 @@ variable "sql_capacity" {
   description = "The number of DTUs to use for the Azure SQL Database."
   type        = number
   default     = 5
-}
-
-variable "app_service_tier" {
-  description = "The tier to use for the Azure App Service Plan."
-  type        = string
-  default     = "Basic"
 }
 
 variable "app_service_size" {
