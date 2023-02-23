@@ -47,6 +47,6 @@ terraform destroy -var-file prod/shared.tfvars
 
 
 ## TODO
-- [] Develop github action deployment 
-- [] Develop DevOps pipeline deployment
+- [ ] Develop github action deployment 
+- [ ] Develop DevOps pipeline deployment
 
