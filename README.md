@@ -29,6 +29,7 @@ az account show
 az account set --subscription="xxxxxx-xxxx-xxxx-xxxx-xxxxxx"
 
 # FIRST TIME run?
+./init_subscription.sh    # sets up remote terraform state
 terraform init
 
 # To see the changes this terraform would do (non-destructive):
@@ -45,6 +46,25 @@ To clean up after yourself, simply:
 terraform destroy -var-file prod/shared.tfvars
 ```
 
+## To Pipeline This
+To pipeline this, we'll need to create a service principal (or have one provided to us), and use our pipeline tool's secrets manager to securely deploy.
+
+```
+# Create Service Principal 
+az ad sp create-for-rbac --name az2tiersample
+```
+
+### GitHub Actions
+Within the GitHub repository where we are going to be deploying from: select settings -> secrets
+
+Add the following secrets:
+
+1. `AZURE_AD_CLIENT_ID` – The service principal ID from above
+2. `AZURE_AD_CLIENT_SECRET` – The secret that was created as part of the Azure Service Principal
+3. `AZURE_AD_TENANT_ID` – The Azure AD tenant ID to where the service principal was created
+4. `AZURE_SUBSCRIPTION_ID` – Subscription ID of where you want to deploy the Terraform
+
+Then follow the steps in github to create the action, or write your own yaml in `.github/workflows/<name of action>.yml`
 
 ## TODO
 - [ ] Develop github action deployment 

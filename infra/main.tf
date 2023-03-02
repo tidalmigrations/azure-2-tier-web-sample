@@ -1,3 +1,12 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "terraform-states"
+    container_name       = "tfstatedevops"
+    storage_account_name = "az2tiersampletfstate001"
+    key                  = "az2tiersample-prod.tfstate"
+  }
+}
+
 provider "azurerm" {
   features {}
 }
