@@ -61,7 +61,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: |
-          terraform plan -input=false -no-color -out tf.plan --var prod/shared.tfvars
+          terraform plan -input=false -no-color -out tf.plan -var-file prod/shared.tfvars
         working-directory: infra
         shell: bash
 
