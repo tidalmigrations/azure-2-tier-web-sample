@@ -66,6 +66,9 @@ Add the following secrets:
 
 Then follow the steps in github to create the action, or write your own yaml in `.github/workflows/<name of action>.yml`
 
+> **Note**
+> There is a sample github action in this repository that you can take and run with. It includes integration with github pull requests.  This requires an additional SECRET to be set, namely `GITHUB_TOKEN`.
+
 ## TODO
 - [ ] Develop github action deployment 
 - [ ] Develop DevOps pipeline deployment
